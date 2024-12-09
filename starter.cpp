@@ -59,22 +59,7 @@ int main() {
     file.close();
     return 0;
 
-    /*leaving this block here for now in case i need to revisit, will delete if not needed laterat final turn in
     
-    //test function part 1
-    string test = "Hello";
-    int result = sum_ascii(test);
-
-    // Print result and show calculation for part 1
-    cout << "Testing sum_ascii() with string: " << test << endl;
-    cout << "Calculation breakdown:" << endl;
-    for(char c : test) {
-        cout << "ASCII value of '" << c << "' is " << (int)c << endl;
-    }
-    cout << "Total sum: " << result << endl;
-    
-
-    return 0;*/
 }
 
 /* 
