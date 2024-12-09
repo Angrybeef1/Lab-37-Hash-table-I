@@ -3,11 +3,13 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <list>
 
 using namespace std;
 
-//part 1 ascii function
-int sum_ascii(string str){
+//part 3 change part 1 hash to a gen_hash
+int gen_hash_index(string str){
     int sum = 0;
     for(char c : str){
         sum += (int)c;
@@ -25,23 +27,41 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
 
-    //part 2 import data.txt
+    //part 3 create hash table as map
+    map<int, list<string>> hash_table;
+
+    //part 2 import data.txt part 3 changes to run the table
     ifstream file("data.txt");
     string line;
-    long total = 0;
-
+    
     while (getline(file,line)) {
         if (!line.empty()) {
-            total += sum_ascii(line);
+            int hash_index = gen_hash_index(line);
+            hash_table[hash_index].push_back(line);
         }
     }
     
-    cout << "\nGrand total of ASCII values: " << total << endl;
+    //cout << "\nGrand total of ASCII values: " << total << endl;
+    cout << "\nFirst 100 hash table entries:" << endl;
+    int count = 0;
+    for (const auto& entry : hash_table){
+        cout << "Hash index " << entry.first << ": ";
+        for(const string& code : entry.second){
+            cout << code<< " ";
+        }
+        cout << endl;
+
+        count++;
+        if (count >= 100) 
+        break;
+    }
     
     file.close();
     return 0;
 
-     //test function part 1
+    /*leaving this block here for now in case i need to revisit, will delete if not needed laterat final turn in
+    
+    //test function part 1
     string test = "Hello";
     int result = sum_ascii(test);
 
@@ -54,7 +74,7 @@ int main() {
     cout << "Total sum: " << result << endl;
     
 
-    return 0;
+    return 0;*/
 }
 
 /* 
